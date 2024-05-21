@@ -14,6 +14,9 @@ menuconfig ARCH_MXC
 	  Support for Freescale MXC/iMX-based family of processors
 
 if ARCH_MXC
+ 
+config ARCH_ADVANTECH
+       bool "Support Advantech board"
 
 config MXC_TZIC
 	bool
