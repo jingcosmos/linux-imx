@@ -926,10 +926,11 @@
 };
 
 &usb3_phy {
+        dr_mode = "host";
 	status = "okay";
 };
 
-&usbotg3 {
+&usbotg3_cdns {
 	dr_mode = "host";
 	status = "okay";
 };
