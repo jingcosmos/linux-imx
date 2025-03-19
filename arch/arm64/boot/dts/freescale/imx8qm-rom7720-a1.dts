@@ -264,6 +264,16 @@
 		regulator-always-on;
 	};
 
+	reg_usb_otg1_vbus: regulator-usbotg1-vbus {
+		compatible = "regulator-fixed";
+		regulator-name = "usb_otg1_vbus";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		gpio = <&lsio_gpio4 3 GPIO_ACTIVE_HIGH>;
+		enable-active-high;
+	};
+
+
 	imx8qm_cm40: imx8qm_cm4@0 {
 		compatible = "fsl,imx8qm-cm4";
 		rsc-da = <0x90000000>;
@@ -914,25 +924,30 @@
 };
 
 &usbotg1 {
+	vbus-supply = <&reg_usb_otg1_vbus>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_usbotg1>;
 	dr_mode = "otg";
 	srp-disable;
 	hnp-disable;
 	adp-disable;
-	power-active-high;
 	disable-over-current;
 	status = "okay";
 };
 
 &usb3_phy {
-        dr_mode = "host";
+	status = "okay";
+};
+
+&usbotg3 {
+	dr_mode = "host";
 	status = "okay";
 };
 
 &usbotg3_cdns3 {
-	dr_mode = "host";
-	status = "okay";
+    dr_mode = "host";
+    status = "okay";
+
 };
 
 &usdhc1 {
