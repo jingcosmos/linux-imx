@@ -13,7 +13,7 @@ struct usb_hcd;
 #ifdef CONFIG_USB_CDNS3_HOST
 
 int cdns3_host_init(struct cdns3 *cdns);
-int xhci_cdns3_suspend_quirk(struct usb_hcd *hcd);
+static int xhci_cdns3_suspend_quirk(struct usb_hcd *hcd);
 
 #else
 
